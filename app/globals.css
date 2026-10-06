@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* ---------- KOD design tokens ----------
+   Green is primary, navy secondary, gold the accent.
+   Light palette on :root; dark palette follows the viewer's system setting. */
+:root {
+  --bg: #f4f6f1;
+  --surface: #ffffff;
+  --surface-2: #eaeee6;
+  --line: #d7ddd2;
+  --line-strong: #b9c2b4;
+  --ink: #14201a;
+  --ink-2: #4a5a50;
+  --ink-3: #7b8a80;
+  --green: #1b4b23;
+  --green-strong: #153c1c;
+  --green-soft: #e3ece2;
+  --on-green: #f4f6f1;
+  --navy: #0d263c;
+  --navy-soft: #e1e8ee;
+  --gold: #c6a15f;
+  --gold-deep: #9e7c3f;
+  --gold-soft: #f3ead8;
+  --danger: #a33a2e;
+  --danger-soft: #f6e4e1;
+  --success: #2f7c3d;
+  --ring: rgba(27, 75, 35, 0.35);
+  --shadow: 0 1px 2px rgba(20, 32, 26, 0.05), 0 6px 20px rgba(20, 32, 26, 0.06);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c1410;
+    --surface: #142019;
+    --surface-2: #1b2a21;
+    --line: #26362c;
+    --line-strong: #35483b;
+    --ink: #e9ece6;
+    --ink-2: #b2bcb4;
+    --ink-3: #7f8b83;
+    --green: #2f7c3d;
+    --green-strong: #3a9149;
+    --green-soft: #17301d;
+    --on-green: #f4f6f1;
+    --navy: #1a3a57;
+    --navy-soft: #142a3d;
+    --gold: #d4b274;
+    --gold-deep: #c6a15f;
+    --gold-soft: #2c2616;
+    --danger: #e07a6e;
+    --danger-soft: #3a1f1b;
+    --success: #5cb46b;
+    --ring: rgba(212, 178, 116, 0.4);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-green: var(--green);
+  --color-green-strong: var(--green-strong);
+  --color-green-soft: var(--green-soft);
+  --color-on-green: var(--on-green);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-soft: var(--gold-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-success: var(--success);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-display), "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --shadow-card: var(--shadow);
+  --radius-card: 14px;
+}
+
+html {
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+/* Safe-area helpers for installed (standalone) mode on iPhone */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+
+/* Display type: Cinzel echoes the crest banner lettering. Used sparingly. */
+.display { font-family: var(--font-display); letter-spacing: 0.02em; }
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 600;
+}
+
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* Scripture reading */
+.scripture p { margin: 0 0 0.9em; }
+.scripture .v { color: var(--gold-deep); font-size: 0.7em; vertical-align: super; margin-right: 0.35em; font-variant-numeric: tabular-nums; }
+
+/* Focus ring */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
